@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie site</title>
+    <link rel="stylesheet" href="moviesite.css">
+    <script src="https://kit.fontawesome.com/f9d9d9cc33.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div id="container">
+        <header id="searchBox">
+            <div>
+                <h1 id="MovieFlix">MovieEX</h1>
+            </div>
+            <div id="searchdiv">
+                <input type="text" id="movieSearch" class="search" oninput="debounce(searchMovies,1000)" placeholder="Search movie">
+            </div>
+            <h4><a href="trending.html" id="trend">Trending</a></h4>
+        </header> 
+        
+        
+    </div>
+    <div id="movieContainer">
+        <div id="seachedTitles"></div>
+        <div id="searchedMovie"></div>
+    </div>  
+        <main id="main"></div>
+</body>
+</html>
+<script src="moviesite.js"></script>

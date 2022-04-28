@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trending page</title>
+    <link rel="stylesheet" href="trending.css">
+  </head>
+  <body>
+      <header>
+        <a href="index.html">MovieEx</a>
+        <h1>Trending Movies</h1>
+    </header>
+    <main id="main">
+        
+    </main>
+  </body>
+</html>
+<script>
+
+  let api_key="664a1041b81295fe938dc7b2d40641f1";
+  async function trendingPage() {
+    try {
+
+      let res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`);
+      let data = await res.json();
+
+      showMovies(data.results)
+      console.log('data.results:', data.results)
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  trendingPage()
+
+//         <div class="movie">
+//             <img src="https://images.wallpaperscraft.com/image/single/laptop_phone_clock_178806_2560x1600.jpg" alt="Images" />
+        
+//             <div class="movie_info">
+//                 <h3>Movie title</h3>
+//                 <span class="green">9.8</span>
+//             </div>
+//             <div class="overview">
+//                 <h3>Overview</h3>
+//                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero esse quas temporibus eveniet laborum expedita quae aspernatur facere dolore officiis! Mollitia dicta commodi doloribus nemo quos alias rem labore dignissimos.
+//             </div>
+//         </div>
+
+ let showMovies= (trendMovies) =>{
+
+    let trendBox = document.getElementById("main");
+    trendBox.innerHTML="";
+    trendMovies.map((elem) =>{
+
+        let movie= document.createElement("div");
+        movie.setAttribute("class","movie");
+
+        let img= document.createElement("img");
+        img.src= `https://image.tmdb.org/t/p/w500/${elem.poster_path}`
+
+        let movie_info= document.createElement("div");
+        movie_info.setAttribute("class","movie_info");
+
+
+        let movieTitle= document.createElement("h3");
+        movieTitle.textContent= elem.title;
+
+        let rating= document.createElement("span");
+        rating.setAttribute("class","green");
+        rating.textContent= elem.vote_average;
+        rating.style.color= `${ratingColor(elem.vote_average)}`;
+
+        let releaseDate= document.createElement("p");
+        releaseDate.textContent= `Release date-${elem.release_date}`;
+
+        let overview= document.createElement("div");
+        overview.setAttribute("class","overview")
+
+        let h3= document.createElement("h3");
+        h3.textContent= "overview";
+
+        let description= document.createElement("p");
+        description.textContent= elem.overview;
+
+        trendBox.append(movie)
+        movie.append(img,movie_info,releaseDate,overview)
+        movie_info.append(movieTitle,rating)
+        overview.append(h3,description)
+    })
+
+ }
+
+ let ratingColor= (vote_average) =>{
+
+    if(vote_average>7)
+    {
+        return "red"
+    }
+    if(vote_average<5)
+    {
+        return "blue"
+    }
+    if(vote_average<7)
+    {
+        return "green"
+    }
+   
+ }
+</script>
