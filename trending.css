@@ -74,10 +74,11 @@ main{
     margin: 1rem;
     border-radius: 4px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    background-color: var(--secondary-color);
+    background-color: rgb(76, 75, 75);
     position:relative;
     overflow: hidden;
     height: 550px;
+    border-radius: 12px;
 }
 .movie>p{
     position:absolute;
@@ -108,7 +109,7 @@ main{
 }
 
 .movie_info span{
-    background-color: var(--primary-color);
+    background-color: rgb(247, 240, 255);
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
     font-weight: bold;
